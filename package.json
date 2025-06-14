@@ -1,0 +1,6 @@
+{
+  "name": "castlerad-feedback",
+  "version": "1.0.0",
+  "main": "api/feedback.js",
+  "license": "MIT"
+}
