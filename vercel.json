@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "functions": {
+    "api/feedback.js": {
+      "runtime": "nodejs18.x"
+    }
+  },
+  "routes": [
+    {
+      "src": "/api/feedback",
+      "dest": "api/feedback.js"
+    }
+  ]
+}
