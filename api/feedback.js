@@ -14,11 +14,15 @@ export default async function handler(req, res) {
   });
 
   const sheets = google.sheets({ version: 'v4', auth });
-
   const sheetId = '1mdFxd7N27KPC2S4GV-6msFc6zZ1wqtFX6kByJ1C-yw';
   const timestamp = new Date().toISOString();
 
   try {
+    // Log available sheet titles for verification
+    const metadata = await sheets.spreadsheets.get({ spreadsheetId: sheetId });
+    const sheetNames = metadata.data.sheets.map(s => s.properties.title);
+    console.log("✅ Available sheet tabs:", sheetNames);
+
     await sheets.spreadsheets.values.append({
       spreadsheetId: sheetId,
       range: 'Sheet1!A:C',
@@ -31,6 +35,6 @@ export default async function handler(req, res) {
     return res.status(200).json({ success: true });
   } catch (error) {
     console.error("❌ Google Sheets API Error:", error);
-    return res.status(500).json({ error: 'Failed to write to Google Sheet' });
+    return res.status(500).json({ error: error.message || 'Failed to write to Google Sheet' });
   }
 }
