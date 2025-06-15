@@ -14,7 +14,7 @@ export default async function handler(req, res) {
   });
 
   const sheets = google.sheets({ version: 'v4', auth });
-  const sheetId = '1mdFxd7N27KPC2S4GV-6msFc6zZ1wqtFX6kByJ1C-yw';
+  const sheetId = '1mdFxd7N27KPC2S4GV-6nmsFc6zZ1wqtFX6kByJ1C-yw';
   const timestamp = new Date().toISOString();
 
   try {
